@@ -8,3 +8,8 @@ To add the ssh key to the remote server, do the following command
 
 `ssh-copy-id -i ~/.ssh/id_ed25519.pub <server ip>`
 `ssh-copy-id -i ~/.ssh/ansible.pub <server ip>`
+
+# TO RUN
+
+`ansible-playbook --ask-become-pass bootstrap.yml`
+`ansible-playbook <playbook.yml>`
