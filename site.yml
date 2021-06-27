@@ -11,6 +11,24 @@
       update_cache: yes
     when: ansible_distribution == "Ubuntu"
     
+- hosts: workstations
+  become: true
+  tasks:
+  
+  - name: install unzip
+    apt:
+      name:
+        - unzip
+  
+  - name: install terraform
+    unarchive:
+      src: https://releases.hashicorp.com/terraform/1.0.1/terraform_1.0.1_linux_amd64.zip
+      dest: /usr/local/bin
+      remote_src: yes
+      mode: 0755
+      owner: root
+      group: root
+    
 - hosts: web_servers
   become: true
   tasks:
@@ -24,6 +42,22 @@
       state: latest
     when: ansible_distribution == "Ubuntu"
     
+  - name: change e-mail addres for admin
+    tags: apache,centos,httpd
+    lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^ServerAdmin'
+      line: ServerAdmin somebody@somewhere.net
+    when: ansible_distribution == "CentOS"
+    register: httpd
+    
+  - name: restart https (CentOS)
+    tags: apache,centos,httpd
+    service:
+      name: httpd
+      state: restarted
+    when: httpd.changed
+    
   - name: copy default html file for site
     tags: apache,apache2
     copy:
@@ -32,6 +66,14 @@
       owner: root
       group: root
       mode: 0644
+      
+  - name: start httpd (CentOS)
+    tags: apache,centos,httpd
+    service:
+      name: httpd
+      status: started
+      enabled: yes
+    when: ansible_distribution == "CentOS"
     
 - hosts: db_servers
   become: true
