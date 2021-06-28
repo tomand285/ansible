@@ -1,6 +1,6 @@
-- name: add ssh key for simone
+- name: add ssh key for ansible
   authorized_key:
-    user: simone
+    user: ansible
     key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMHch5ChFgehKbhkrbnf/DTTs07U1fyqyNa1G49fU2aZ ansible"
     
 - name: generate sshd_config file from template

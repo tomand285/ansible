@@ -2,6 +2,10 @@
 
 The master repo of all of my Ansible playbooks.
 
+# CREATE SSH KEY
+
+`ssh=keygen -t ed25519 -C "<My comment>"`
+
 # SETUP
 
 To add the ssh key to the remote server, do the following command

@@ -1,2 +1,5 @@
-[web_servers]
+[chia_server]
 45.33.84.89
+
+[kube_server]
+
