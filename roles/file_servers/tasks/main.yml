@@ -1,7 +1,0 @@
-- name: install samba package (Ubuntu)
-  tags: samba
-  apt:
-    name:
-      - samba
-    state: latest
-  when: ansible_distribution == "Ubuntu"
