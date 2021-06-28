@@ -10,5 +10,5 @@ To add the ssh key to the remote server, do the following command
 
 # TO RUN
 
-`ansible-playbook --ask-become-pass bootstrap.yml`
+`ansible-playbook -u root --private-key ~/.ssh/id_ed25519 bootstrap.yml`
 `ansible-playbook <playbook.yml>`

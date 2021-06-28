@@ -6,23 +6,6 @@
       - "{{ php_package_name }}"
     state: latest
   
-- name: start and enable apache service
-  tags: apache,httpd
-  service:
-    name: "{{ apache_service }}"
-    status: started
-    enabled: yes
-  when: ansible_distribution == "CentOS"
-    
-- name: change e-mail addres for admin
-  tags: apache,centos,httpd
-  lineinfile:
-    path: /etc/httpd/conf/httpd.conf
-    regexp: '^ServerAdmin'
-    line: ServerAdmin somebody@somewhere.org
-  when: ansible_distribution == "CentOS"
-  notify: restart_apache
-    
 - name: copy default html file for site
   tags: apache,apache2
   copy:
