@@ -1,6 +1,3 @@
 [chia_server]
-#blaze01.tomko-network.io
-45.33.84.89
-
-[kube_server]
+blaze01.tomko-network.io
 45.33.84.89

@@ -2,3 +2,19 @@
   authorized_key:
     user: ansible
     key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMHch5ChFgehKbhkrbnf/DTTs07U1fyqyNa1G49fU2aZ ansible"
+
+- name: Install Git
+  tags: always
+  apt:
+    name: 
+      - git
+    state: latest
+    update_cache: yes
+    
+- name: Install Byobu
+  tags: always
+  apt:
+    name:
+      - byobu
+    state: latest
+    update_cache: yes

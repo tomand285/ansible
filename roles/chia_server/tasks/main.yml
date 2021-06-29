@@ -1,8 +1,13 @@
-- name: Install Git
+- name: Adding Universe repository for exfat
+  shell: add-apt-repository universe -y
+  changed_when: false
+
+- name: Install exFat
   tags: always
   apt:
-    name: 
-      - git
+    name:
+      - exfat-fuse
+      - exfat-utils
     state: latest
     update_cache: yes
     
@@ -12,11 +17,8 @@
     dest: /git/chia-blockchain
     version: latest
     recursive: yes
-    
-- name: Git checkout test
-  ansible.builtin.git:
-    repo: 'https://github.com/tomand285/ansible-playbooks.git'
-    dest: /git/test
-    version: master
-    recursive: yes
-    
+
+#ssh into server
+#sh install.sh
+#. ./activate
+#chia init
