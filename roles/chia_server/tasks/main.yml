@@ -20,5 +20,6 @@
 
 #ssh into server
 #sh install.sh
+#byobu
 #. ./activate
 #chia init

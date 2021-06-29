@@ -3,18 +3,14 @@
     user: ansible
     key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMHch5ChFgehKbhkrbnf/DTTs07U1fyqyNa1G49fU2aZ ansible"
 
-- name: Install Git
+- name: Install useful packages
   tags: always
   apt:
     name: 
       - git
-    state: latest
-    update_cache: yes
-    
-- name: Install Byobu
-  tags: always
-  apt:
-    name:
       - byobu
+      - htop
+      - glances
+      - chkrootkit
     state: latest
     update_cache: yes
