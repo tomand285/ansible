@@ -1,0 +1,22 @@
+- name: Install Git
+  tags: always
+  apt:
+    name: 
+      - git
+    state: latest
+    update_cache: yes
+    
+- name: Git checkout of the Chia Network
+  ansible.builtin.git:
+    repo: 'https://github.com/Chia-Network/chia-blockchain.git'
+    dest: /git/chia-blockchain
+    version: latest
+    recursive: yes
+    
+- name: Git checkout test
+  ansible.builtin.git:
+    repo: 'https://github.com/tomand285/ansible-playbooks.git'
+    dest: /git/test
+    version: master
+    recursive: yes
+    
